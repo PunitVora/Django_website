@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <style>
+
+    body{
+        margin: 65px ;
+        padding: 40px;
+        background: url("{% static 'homee.jpg' %}");
+        background-size: 100%;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    
+        }
+    
+    /* css for contaoner class  */
+    .container{
+            display: block;
+            width: 24%;
+            margin: 7px auto;
+            border: 6px solid rgb(236, 105, 57);
+            border-style:dashed;
+            padding-left: 10% ;
+            padding-right: 10%;
+            padding-top:3%;
+            padding-bottom:8%;
+            border-radius: 11px;
+            text-align: center;
+
+        }
+    
+    /* css for all input feilds  */
+    .inp{
+        width: 100%;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+    /* css for submit and clear button */
+    .btn{  
+        background-color: transparent rgb(233, 79, 18); 
+        border-color: rgb(233, 79, 18);
+        margin:4%;
+        padding: 4px;
+        width: 60%;
+        border-radius: 7px;
+        font-size: medium;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    
+        }
+
+    /* css for input tags  */
+    .form-group input {
+            text-align: center;
+            border : 2px solid rgb(235, 131, 57);
+            display: block;
+            width: 80%;
+            margin: 13px auto;
+            padding: 6px;
+            
+        }
+         
+    /* css for error message  */
+    h5{color: red;}
+           
+    </style>
+
+
+</head>
+<body>
+
+<!-- container class   -->
+<div class="container">
+
+    <h2>Register Below</h2>
+
+        <!-- block to display error message -->
+
+        {% for message in messages %}
+        <h5>{{message}}</h5>
+        {% endfor %}
+
+        <!-- HTML form  -->
+        <form method= "post" action="Register">
+            <!-- To avoid csrf token error because of method="POST" -->
+            {% csrf_token %}
+
+            <div class="form-group">
+                <!-- username field  -->
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" placeholder="e.g. John Doe">
+                </div>
+                
+                <!-- email field  -->
+                <div>
+                    <label for="mail">Email:</label>
+                    <input type="email" name="email" placeholder="e.g. Johndoe@email.com">
+                </div>  
+                
+                <!-- password field  -->
+                <div>
+                    <label for="passw">Password:</label>
+                     <input type="password" name="password"  placeholder="e.g. 123@sdra">
+                </div>  
+                
+                <!-- re enter password field  -->
+                <div>
+                    <label for="re-passw">Re-enter password:</label>
+                    <input type="password" name="password2"  placeholder="e.g. 123@sdra">
+                </div>
+
+            </div>
+
+                <!-- terms and conditions checkbox  -->
+                <div>
+                    <input type="checkbox" name="terms&conditions" checked>I agree to <a href="">terms and conditions</a>
+                </div>
+               
+                <div>
+                    <!-- submit button  -->
+                    <input type="submit" value="Register" class="btn">
+                    <!-- clear button  -->
+                    <input type="reset" value="Clear" class="btn">
+
+                </div> 
+            
+        </form>
+</div> 
+
+</body>
+</html>
