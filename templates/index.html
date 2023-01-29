@@ -14,8 +14,8 @@
 
    /* css for body  */
    body{
-        margin  : 70px;
-        padding: 50px;
+        margin: 50px;
+        padding: 60px;
         background: url("{% static 'homee.jpg' %}");
         background-size: 100%;
         font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif  
@@ -27,7 +27,7 @@
     border-color: rgb(233, 79, 18);
     margin:10%;
     padding: 7px;
-    width: 70%;
+    width: 55%;
     border-radius: 7px;
     font-size: medium;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif 
@@ -40,42 +40,39 @@
             margin: 10px auto;
             border: 6px solid rgb(241, 107, 58);
             border-style:dashed;
-            padding-left: 6% ;
-            padding-right: 6%;
-            padding-top:8%;
-            padding-bottom:8%;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top:7%;
+            padding-bottom:7%;
             border-radius: 11px;
             text-align: center;
     }
 
 </style>
 
+<!-- class container  -->
+
+
 <!-- condition to check if user is logged in or not  -->
-{% if user.is_authenticated %}
+    {% if user.is_authenticated %}
+    <div class="container">
+        <h2>Welcome, {{user.username}}.</h2>
+        <!-- Logout button  -->
+        <div>
+        <a href="Logout"><button class="btn"> <b>Logout</b> </button></a> 
+        </div>
+    </div>
+        {% else %}
+    <div class="container">
+        <h2>Welcome to our website</h2>
+        <!-- Login or Register button  -->
+        <div>
+        <a href="Login"><button class="btn"> <b>Login or Register</b>  </button></a> 
+        </div>
+    </div>
+        {% endif %}
 
-<!-- class container  -->
-<div class="container">
-<h2>Welcome, {{user.username}}.</h2>
 
-<!-- Logout button  -->
-<div class="logout">
-<a href="Logout"><button class="btn"> <b>Logout</b> </button></a> 
-</div>
 
-</div>
-{% else %}
-<!-- class container  -->
-<div class="container">
-
-<h2>Welcome to our website</h2>
-
-<!-- Login or Register button  -->
-<div class="login">
-<a href="Login"><button class="btn"> <b>Login or Register</b>  </button></a> 
-</div>
-
-</div>
-{% endif %}
-
-</body>
+</body> 
 </html>
